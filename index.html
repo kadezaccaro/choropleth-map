@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D3 Choropleth Map</title>
+
+    <script src="https://d3js.org/d3.v7.min.js" defer></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"
+      defer
+    ></script>
+    <script src="app.js" defer></script>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+
+      body {
+        background-color: black;
+        color: white;
+        margin: 0;
+      }
+
+      main {
+        position: relative;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 0;
+      }
+
+      h2 {
+        font-weight: 400;
+        margin: 5px;
+        text-align: center;
+      }
+
+      p {
+        margin: 11px 0px 11px 0px;
+      }
+
+      #d3-container {
+        position: relative;
+      }
+
+      .states {
+        fill: none;
+        stroke: black;
+        stroke-linejoin: round;
+      }
+
+      #tooltip {
+        position: absolute;
+        pointer-events: none; /* Prevent tooltip from flashing when mouse is moving */
+        padding: 10px;
+        background-color: white;
+        color: black;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      #legend {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: white;
+        margin-left: 500px;
+        margin-bottom: -80px;
+        padding-top: 50px;
+      }
+      #color-blocks {
+        width: 30px;
+        height: 120px;
+      }
+      #color-label {
+        padding-left: 10px;
+      }
+
+      .highlight {
+        color: #b8dbd9;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <h1 id="title">Educational Attainment of the United States</h1>
+      <h2 id="description">
+        Percentage of adults age 25 and older with a
+        <span class="highlight">bachelor's degree or higher</span>
+        (2010-2014)
+      </h2>
+      <div id="legend">
+        <svg id="color-blocks">
+          <rect x="0" y="0" width="30px" height="30px" style="fill: #b8dbd9" />
+          <rect x="0" y="30" width="30px" height="30px" style="fill: #93afae" />
+          <rect x="0" y="60" width="30px" height="30px" style="fill: #6e8382" />
+          <rect x="0" y="90" width="30px" height="30px" style="fill: #4a5857" />
+        </svg>
+        <div id="color-label">
+          <p>Less than 15%</p>
+          <p>15% to 30%</p>
+          <p>30% to 45%</p>
+          <p>More than 45%</p>
+        </div>
+      </div>
+      <div id="d3-container"></div>
+    </main>
+  </body>
+</html>
